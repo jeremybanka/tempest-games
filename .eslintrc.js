@@ -3,11 +3,27 @@
  */
 module.exports = {
   extends: [
-    "@remix-run/eslint-config",
     "@remix-run/eslint-config/node",
-    "@remix-run/eslint-config/jest-testing-library",
+    "@banka/react",
+    // "@remix-run/eslint-config/jest-testing-library",
     "prettier",
   ],
+  rules: {
+    "import/extensions": [
+      "error",
+      {
+        ts: "never",
+        tsx: "never",
+        js: "never",
+        jsx: "never",
+        css: "always",
+        scss: "always",
+        client: "always",
+        server: "always",
+        schema: "always",
+      },
+    ],
+  },
   // we're using vitest which has a very similar API to jest
   // (so the linting plugins work nicely), but it means we have to explicitly
   // set the jest version.
@@ -16,4 +32,4 @@ module.exports = {
       version: 27,
     },
   },
-};
+}

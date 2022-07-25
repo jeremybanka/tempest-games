@@ -2,14 +2,14 @@ import type { FC } from "react"
 
 import { Link } from "@remix-run/react"
 
-const EnergyIndexPage: FC = () => {
+const ReactionIndexPage: FC = () => {
   return (
     <p>
-      No note selected. Select a note on the left, or{" "}
+      No reaction selected. Select a reaction on the left, or{" "}
       <Link to="new" className="text-blue-500 underline">
-        create a new note.
+        create a new reaction.
       </Link>
     </p>
   )
 }
-export default EnergyIndexPage
+export default ReactionIndexPage

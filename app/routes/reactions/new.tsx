@@ -4,11 +4,11 @@ import { useEffect, useRef } from "react"
 import type { ActionFunction } from "@remix-run/node"
 import { json, redirect } from "@remix-run/node"
 import { useActionData } from "@remix-run/react"
-import schema from "@wayfarer/generated/energy.schema"
+import schema from "@wayfarer/generated/reaction.schema"
 import { makeDomainFunction } from "remix-domains"
 import { performMutation, Form } from "remix-forms"
 
-import { createEnergy } from "~/models/energy.server"
+import { createReaction } from "~/models/reaction.server"
 import { requireUserId } from "~/session.server"
 
 type ActionData = {
@@ -18,7 +18,7 @@ type ActionData = {
   }
 }
 
-const mutation = makeDomainFunction(schema)(createEnergy)
+const mutation = makeDomainFunction(schema)(createReaction)
 
 export const action: ActionFunction = async ({ request }) => {
   const userId = await requireUserId(request)
@@ -39,7 +39,7 @@ export const action: ActionFunction = async ({ request }) => {
   )
 }
 
-const NewEnergyPage: FC = () => {
+const NewReactionPage: FC = () => {
   const actionData = useActionData() as ActionData
   const titleRef = useRef<HTMLInputElement>(null)
   const bodyRef = useRef<HTMLTextAreaElement>(null)
@@ -54,4 +54,4 @@ const NewEnergyPage: FC = () => {
 
   return <Form schema={schema} />
 }
-export default NewEnergyPage
+export default NewReactionPage
